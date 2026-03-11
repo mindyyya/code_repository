@@ -35,6 +35,26 @@
         <button id="draw-btn">번호 추첨</button>
         <div id="result-container"></div>
     </div>
+
+    <div class="contact-container">
+        <h2>제휴 문의</h2>
+        <p>비즈니스 제휴 및 기타 문의사항을 남겨주세요.</p>
+        <form action="https://formspree.io/f/maqpoqza" method="POST" class="contact-form">
+            <div class="form-group">
+                <label for="name">성함/업체명</label>
+                <input type="text" id="name" name="name" placeholder="성함 또는 업체명을 입력하세요" required>
+            </div>
+            <div class="form-group">
+                <label for="email">이메일 주소</label>
+                <input type="email" id="email" name="_replyto" placeholder="example@email.com" required>
+            </div>
+            <div class="form-group">
+                <label for="message">문의 내용</label>
+                <textarea id="message" name="message" rows="4" placeholder="문의 내용을 상세히 적어주세요" required></textarea>
+            </div>
+            <button type="submit" class="submit-btn">문의 보내기</button>
+        </form>
+    </div>
     <script type="module" src="main.js"></script>
 </body>
 </html>
