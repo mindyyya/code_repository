@@ -14,12 +14,12 @@
     --green: #7ed321;
     --lotto-set-bg: rgba(255, 255, 255, 0.8);
     --lotto-set-border: rgba(0,0,0,0.05);
-    --btn-bg: #f8f9fa;
+    --btn-bg: #ffffff;
     --btn-border: #dee2e6;
 }
 
-/* html.dark-mode 로 변경 (안정적인 적용을 위해) */
-html.dark-mode body {
+/* 다크 모드 변수 정의 */
+.dark-mode {
     --bg-color: #121212;
     --primary-color: #1e1e1e;
     --shadow-color: rgba(0, 0, 0, 0.4);
@@ -41,6 +41,7 @@ html.dark-mode body {
 body {
     font-family: 'Pretendard', sans-serif;
     display: flex;
+    flex-direction: column; /* 위아래 배치를 위해 column 추가 */
     justify-content: center;
     align-items: center;
     min-height: 100vh;
@@ -48,67 +49,68 @@ body {
     background-image: url('data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%23d4d4d4" fill-opacity="0.1"%3E%3Cpath d="M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');
 }
 
+/* 상단 버튼 영역 (타이틀과 확실히 분리) */
+.top-nav {
+    margin-bottom: 2rem; /* 컨테이너와 간격 */
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.theme-toggle-btn {
+    background-color: var(--btn-bg);
+    border: 2px solid var(--btn-border);
+    color: var(--text-color);
+    padding: 0.8rem 1.6rem;
+    border-radius: 14px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 12px var(--shadow-color);
+    z-index: 100;
+}
+
+.theme-toggle-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 16px var(--shadow-color);
+    border-color: var(--accent-color);
+}
+
+.theme-toggle-btn:active {
+    transform: translateY(0);
+}
+
+.icon {
+    font-size: 1.4rem;
+}
+
 .app-container {
     background-color: var(--primary-color);
-    padding: 2.5rem 2rem 3rem 2rem;
-    border-radius: 20px;
-    box-shadow: 0 10px 40px var(--shadow-color);
+    padding: 3.5rem 2rem;
+    border-radius: 24px;
+    box-shadow: 0 15px 45px var(--shadow-color);
     width: 95%;
     max-width: 550px;
     text-align: center;
     position: relative;
     border: 1px solid var(--lotto-set-border);
-    overflow: hidden;
-}
-
-.header-actions {
-    display: flex;
-    justify-content: center; /* 가운데 정렬 */
-    margin-bottom: 2rem;
-}
-
-.theme-toggle {
-    background-color: var(--btn-bg);
-    border: 2px solid var(--btn-border);
-    color: var(--text-color);
-    padding: 0.8rem 1.5rem;
-    border-radius: 14px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-size: 1rem;
-    font-weight: 600;
-    transition: all 0.2s ease;
-    box-shadow: 0 4px 10px var(--shadow-color);
-    z-index: 100;
-}
-
-.theme-toggle:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 15px var(--shadow-color);
-    background-color: var(--btn-border);
-}
-
-.theme-toggle:active {
-    transform: translateY(0);
-}
-
-.mode-icon {
-    font-size: 1.4rem;
 }
 
 h1 {
     text-align: center;
-    margin-bottom: 2.5rem;
+    margin-bottom: 3rem; /* 타이틀 아래 간격 넓힘 */
     color: var(--text-color);
-    font-size: 2.4rem;
+    font-size: 2.6rem;
     font-weight: 800;
-    letter-spacing: -1px;
+    letter-spacing: -1.5px;
 }
 
 #result-container {
-    margin-top: 2rem;
+    margin-top: 2.5rem;
     display: grid;
     gap: 1.2rem;
     justify-items: center;
@@ -119,20 +121,20 @@ h1 {
     background-image: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     color: white;
     border: none;
-    padding: 1.2rem 3rem;
+    padding: 1.2rem 3.5rem;
     border-radius: 50px;
-    font-size: 1.4rem;
+    font-size: 1.5rem;
     font-weight: 700;
     cursor: pointer;
     transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    box-shadow: 0 10px 25px rgba(118, 75, 162, 0.4);
+    box-shadow: 0 12px 28px rgba(118, 75, 162, 0.4);
 }
 
 #draw-btn:hover {
-    transform: translateY(-4px) scale(1.03);
-    box-shadow: 0 15px 30px rgba(118, 75, 162, 0.5);
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 18px 35px rgba(118, 75, 162, 0.5);
 }
 
 #draw-btn:active {
-    transform: translateY(-1px) scale(1);
+    transform: translateY(-2px) scale(1.02);
 }
