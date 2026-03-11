@@ -1,1 +1,110 @@
-/* Add styles here */
+
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+
+:root {
+    --bg-color: #f0f2f5;
+    --primary-color: #ffffff;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+    --text-color: #333333;
+    --accent-color: #4a90e2;
+    --yellow: #f5a623;
+    --blue: #4a90e2;
+    --red: #d0021b;
+    --gray: #9b9b9b;
+    --green: #7ed321;
+    --lotto-set-bg: rgba(255, 255, 255, 0.8);
+    --lotto-set-border: rgba(0,0,0,0.05);
+}
+
+body.dark-mode {
+    --bg-color: #121212;
+    --primary-color: #1e1e1e;
+    --shadow-color: rgba(0, 0, 0, 0.4);
+    --text-color: #e0e0e0;
+    --accent-color: #bb86fc;
+    --lotto-set-bg: rgba(255, 255, 255, 0.05);
+    --lotto-set-border: rgba(255,255,255,0.1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body {
+    font-family: 'Pretendard', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: var(--bg-color);
+    background-image: url('data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%23d4d4d4" fill-opacity="0.1"%3E%3Cpath d="M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');
+}
+
+.theme-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: var(--primary-color);
+    border: 1px solid var(--lotto-set-border);
+    padding: 10px;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 4px 10px var(--shadow-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    z-index: 100;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: var(--text-color);
+    font-size: 2.5rem;
+    font-weight: 700;
+}
+
+.app-container {
+    background-color: var(--primary-color);
+    padding: 3rem;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px var(--shadow-color);
+    width: 100%;
+    max-width: 600px;
+    text-align: center;
+}
+
+#result-container {
+    margin-top: 2rem;
+    display: grid;
+    gap: 1.5rem;
+    justify-items: center;
+}
+
+#draw-btn {
+    font-family: 'Pretendard', sans-serif;
+    background-image: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+#draw-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+}
+
+#draw-btn:active {
+    transform: translateY(0);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}

@@ -1,14 +1,19 @@
-<!doctype html>
-<html lang="en">
+
+<!DOCTYPE html>
+<html lang="ko">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Hello World</title>
-  <link href='/style.css' rel='stylesheet'>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Lotto Number Generator</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>Hello, world!</h1>
-  <button onclick="console.log('hello');">Press me</button>
-  <script defer type="text/javascript" src="/main.js"></script>
+    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Dark Mode">🌓</button>
+    <div class="app-container">
+        <h1>로또 번호 추첨기</h1>
+        <button id="draw-btn">번호 추첨</button>
+        <div id="result-container"></div>
+    </div>
+    <script type="module" src="main.js"></script>
 </body>
 </html>
