@@ -125,15 +125,18 @@ function generateFiveSets() {
 }
 
 // 3. Main Application Logic
-document.addEventListener('DOMContentLoaded', () => {
+function initApp() {
     const drawBtn = document.getElementById('draw-btn');
     const resultContainer = document.getElementById('result-container');
     const themeToggle = document.getElementById('theme-toggle');
 
     if (!drawBtn || !resultContainer || !themeToggle) {
-        console.error('Required elements not found');
+        console.error('Required elements not found. Retrying...');
+        setTimeout(initApp, 100);
         return;
     }
+
+    console.log('App initialized');
 
     // Theme logic
     const savedTheme = localStorage.getItem('theme');
@@ -141,20 +144,15 @@ document.addEventListener('DOMContentLoaded', () => {
         document.body.classList.add('dark-mode');
     }
 
-    themeToggle.addEventListener('click', () => {
+    themeToggle.addEventListener('click', (e) => {
+        e.preventDefault();
         document.body.classList.toggle('dark-mode');
         const isDark = document.body.classList.contains('dark-mode');
         localStorage.setItem('theme', isDark ? 'dark' : 'light');
-        console.log('Theme toggled. Dark mode:', isDark);
+        console.log('Theme changed to:', isDark ? 'dark' : 'light');
     });
 
     drawBtn.addEventListener('click', () => {
-        // Simple scale effect on click
-        drawBtn.style.transform = 'scale(0.95)';
-        setTimeout(() => {
-            drawBtn.style.transform = '';
-        }, 100);
-
         const fiveSets = generateFiveSets();
         displayNumbers(fiveSets);
     });
@@ -163,10 +161,15 @@ document.addEventListener('DOMContentLoaded', () => {
         resultContainer.innerHTML = ''; // Clear previous results
         allSets.forEach((numberSet, index) => {
             const lottoSetElement = document.createElement('lotto-set');
-            // Stagger the appearance of each set
-            lottoSetElement.style.animationDelay = `${index * 0.2}s`;
             lottoSetElement.setAttribute('numbers', JSON.stringify(numberSet));
             resultContainer.appendChild(lottoSetElement);
         });
     }
-});
+}
+
+// Initialize once
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initApp);
+} else {
+    initApp();
+}

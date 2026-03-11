@@ -8,8 +8,13 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Dark Mode">🌓</button>
     <div class="app-container">
+        <div class="header-actions">
+            <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Dark Mode">
+                <span class="mode-icon">🌓</span>
+                <span class="mode-text">테마 전환</span>
+            </button>
+        </div>
         <h1>로또 번호 추첨기</h1>
         <button id="draw-btn">번호 추첨</button>
         <div id="result-container"></div>
