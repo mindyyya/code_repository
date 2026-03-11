@@ -145,6 +145,7 @@ document.addEventListener('DOMContentLoaded', () => {
         document.body.classList.toggle('dark-mode');
         const isDark = document.body.classList.contains('dark-mode');
         localStorage.setItem('theme', isDark ? 'dark' : 'light');
+        console.log('Theme toggled. Dark mode:', isDark);
     });
 
     drawBtn.addEventListener('click', () => {
