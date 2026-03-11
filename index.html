@@ -50,22 +50,47 @@
         </section>
 
         <div class="contact-container">
-            <h2>제휴 및 문의</h2>
-            <p>비즈니스 제휴 및 기타 문의사항을 남겨주시면 빠르게 답변해 드리겠습니다.</p>
+            <div class="contact-header">
+                <h2>🤝 제휴 및 비즈니스 문의</h2>
+                <p>성공적인 파트너십을 위한 제안을 기다립니다.</p>
+            </div>
             <form action="https://formspree.io/f/maqpoqza" method="POST" class="contact-form">
-                <div class="form-group">
-                    <label for="name">성함/업체명</label>
-                    <input type="text" id="name" name="name" placeholder="성함 또는 업체명을 입력하세요" required>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="name">성함 / 업체명</label>
+                        <input type="text" id="name" name="name" placeholder="예: 홍길동 (주식회사 OOO)" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">연락처</label>
+                        <input type="tel" id="phone" name="phone" placeholder="예: 010-1234-5678" required>
+                    </div>
                 </div>
                 <div class="form-group">
                     <label for="email">이메일 주소</label>
                     <input type="email" id="email" name="_replyto" placeholder="example@email.com" required>
                 </div>
                 <div class="form-group">
-                    <label for="message">문의 내용</label>
-                    <textarea id="message" name="message" rows="4" placeholder="문의 내용을 상세히 적어주세요" required></textarea>
+                    <label for="subject">문의 유형</label>
+                    <select id="subject" name="subject" required>
+                        <option value="" disabled selected>문의 유형을 선택하세요</option>
+                        <option value="제휴 제안">비즈니스 제휴 제안</option>
+                        <option value="광고 문의">광고 게재 문의</option>
+                        <option value="기능 개선">기능 개선 및 버그 제보</option>
+                        <option value="기타">기타 문의</option>
+                    </select>
                 </div>
-                <button type="submit" class="submit-btn">문의 보내기</button>
+                <div class="form-group">
+                    <label for="message">상세 내용</label>
+                    <textarea id="message" name="message" rows="5" placeholder="문의하실 내용을 상세히 입력해 주세요." required></textarea>
+                </div>
+                <div class="form-agreement">
+                    <label class="checkbox-container">
+                        <input type="checkbox" required>
+                        <span class="checkmark"></span>
+                        <span class="agreement-text">개인정보 수집 및 이용에 동의합니다.</span>
+                    </label>
+                </div>
+                <button type="submit" class="submit-btn">문의 내용 제출하기</button>
             </form>
         </div>
 

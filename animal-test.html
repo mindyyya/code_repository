@@ -38,22 +38,33 @@
     <main class="content-wrapper">
         <div class="app-container animal-upload-container">
             <h1>인공지능 동물상 테스트</h1>
-            <p class="subtitle">AI가 분석하는 당신의 매력적인 동물상</p>
+            <p class="subtitle">당신의 얼굴은 어떤 동물을 닮았을까요?</p>
             
             <div class="upload-section">
                 <label for="image-upload" class="file-upload-label">
-                    <span class="upload-icon">📸</span>
-                    <span class="upload-text">사진 선택 또는 드래그</span>
+                    <span class="upload-icon">📷</span>
+                    <span class="upload-text">사진을 업로드하세요</span>
+                    <span class="upload-hint">(얼굴이 잘 나온 정면 사진이 좋습니다)</span>
                 </label>
                 <input type="file" id="image-upload" accept="image/*" onchange="handleImageUpload(event)" style="display: none;">
             </div>
 
+            <div id="loading-section" style="display: none;">
+                <div class="loader"></div>
+                <p>AI가 얼굴을 분석하고 있습니다...</p>
+            </div>
+
             <div id="result-display-section" style="display: none;">
-                <div class="image-preview-wrapper">
-                    <img id="face-image" src="#" alt="your image" />
+                <div class="result-layout">
+                    <div class="image-preview-wrapper">
+                        <img id="face-image" src="#" alt="your image" />
+                    </div>
+                    <div class="analysis-results-wrapper">
+                        <h3>분석 결과</h3>
+                        <div id="label-container" class="analysis-results"></div>
+                        <button class="retry-btn" onclick="location.reload()">다른 사진으로 테스트</button>
+                    </div>
                 </div>
-                <div id="label-container" class="analysis-results"></div>
-                <button class="retry-btn" onclick="location.reload()">다른 사진으로 테스트</button>
             </div>
         </div>
 
@@ -93,10 +104,15 @@
                 reader.onload = async function(e) {
                     const imgElement = document.getElementById('face-image');
                     imgElement.src = e.target.result;
+                    
                     document.querySelector('.upload-section').style.display = 'none';
-                    document.getElementById('result-display-section').style.display = 'block';
+                    document.getElementById('loading-section').style.display = 'block';
+                    
                     if (!model) await loadModel();
                     await predict(imgElement);
+                    
+                    document.getElementById('loading-section').style.display = 'none';
+                    document.getElementById('result-display-section').style.display = 'block';
                 };
                 reader.readAsDataURL(input.files[0]);
             }
