@@ -1,0 +1,49 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이용약관 - MY APP</title>
+    <link rel="stylesheet" href="style.css">
+    <script>
+        (function() {
+            if (localStorage.getItem('theme') === 'dark') document.documentElement.classList.add('dark-mode');
+        })();
+    </script>
+</head>
+<body>
+    <header class="main-header">
+        <nav class="nav-container">
+            <div class="nav-logo"><a href="index.html">🍀 MY APP</a></div>
+            <ul class="nav-links">
+                <li><a href="index.html">로또 추첨</a></li>
+                <li><a href="animal-test.html">동물상 테스트</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="content-wrapper">
+        <div class="app-container policy-container">
+            <h1>이용약관</h1>
+            <div class="policy-content">
+                <h3>제 1 조 (목적)</h3>
+                <p>본 약관은 MY APP이 제공하는 로또 추첨기 및 AI 동물상 테스트 서비스의 이용 조건을 규정합니다.</p>
+                <h3>제 2 조 (서비스의 성격)</h3>
+                <p>본 사이트에서 제공하는 로또 번호는 무작위 알고리즘에 의한 참고용 수치이며, 실제 당첨을 보장하지 않습니다. AI 동물상 테스트는 엔터테인먼트 목적으로만 제공됩니다.</p>
+                <h3>제 3 조 (책임의 한계)</h3>
+                <p>서비스 이용으로 발생하는 결과에 대한 최종 책임은 사용자에게 있으며, 본 사이트는 결과에 따른 어떠한 손실에 대해서도 책임을 지지 않습니다.</p>
+            </div>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <div class="footer-content">
+            <p>&copy; 2026 MY APP. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="privacy.html">개인정보처리방침</a> | <a href="terms.html">이용약관</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
