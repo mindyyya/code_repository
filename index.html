@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Modern Lotto Number Generator</title>
+    <title>Modern Lotto & AI Animal Face Test</title>
     <link rel="stylesheet" href="style.css">
     <script>
         // 초기 테마 설정
@@ -23,59 +23,65 @@
     </script>
 </head>
 <body>
-    <div class="top-nav">
-        <button onclick="toggleTheme()" class="theme-toggle-btn" aria-label="Toggle Dark Mode">
-            <span class="icon">🌓</span>
-            <span class="text">다크/화이트 모드 전환</span>
-        </button>
-    </div>
-
-    <!-- 동물상 테스트 이동 버튼 -->
-    <div class="app-container main-nav-container">
-        <h1>인공지능 동물상 테스트</h1>
-        <p class="subtitle">강아지상? 고양이상? AI가 당신의 얼굴을 분석합니다.</p>
-        <a href="animal-test.html" class="nav-btn animal-test-btn">테스트하러 가기</a>
-    </div>
-
-    <div class="app-container">
-        <h1>로또 번호 추첨기</h1>
-        <button id="draw-btn">번호 추첨</button>
-        <div id="result-container"></div>
-    </div>
-
-    <div class="contact-container">
-        <h2>제휴 문의</h2>
-        <p>비즈니스 제휴 및 기타 문의사항을 남겨주세요.</p>
-        <form action="https://formspree.io/f/maqpoqza" method="POST" class="contact-form">
-            <div class="form-group">
-                <label for="name">성함/업체명</label>
-                <input type="text" id="name" name="name" placeholder="성함 또는 업체명을 입력하세요" required>
+    <header class="main-header">
+        <nav class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html">🍀 MY APP</a>
             </div>
-            <div class="form-group">
-                <label for="email">이메일 주소</label>
-                <input type="email" id="email" name="_replyto" placeholder="example@email.com" required>
+            <ul class="nav-links">
+                <li><a href="index.html" class="active">로또 추첨</a></li>
+                <li><a href="animal-test.html">동물상 테스트</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button onclick="toggleTheme()" class="theme-toggle-btn" aria-label="Toggle Dark Mode">
+                    <span class="icon">🌓</span>
+                </button>
             </div>
-            <div class="form-group">
-                <label for="message">문의 내용</label>
-                <textarea id="message" name="message" rows="4" placeholder="문의 내용을 상세히 적어주세요" required></textarea>
-            </div>
-            <button type="submit" class="submit-btn">문의 보내기</button>
-        </form>
-    </div>
+        </nav>
+    </header>
 
-    <div class="comments-container">
-        <h2>댓글 피드백</h2>
-        <div id="disqus_thread"></div>
-        <script>
-            (function() { // DON'T EDIT BELOW THIS LINE
-            var d = document, s = d.createElement('script');
-            s.src = 'https://mindyy.disqus.com/embed.js';
-            s.setAttribute('data-timestamp', +new Date());
-            (d.head || d.body).appendChild(s);
-            })();
-        </script>
-        <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-    </div>
+    <main class="content-wrapper">
+        <div class="app-container">
+            <h1>로또 번호 추첨기</h1>
+            <button id="draw-btn">번호 추첨</button>
+            <div id="result-container"></div>
+        </div>
+
+        <div class="contact-container">
+            <h2>제휴 문의</h2>
+            <p>비즈니스 제휴 및 기타 문의사항을 남겨주세요.</p>
+            <form action="https://formspree.io/f/maqpoqza" method="POST" class="contact-form">
+                <div class="form-group">
+                    <label for="name">성함/업체명</label>
+                    <input type="text" id="name" name="name" placeholder="성함 또는 업체명을 입력하세요" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">이메일 주소</label>
+                    <input type="email" id="email" name="_replyto" placeholder="example@email.com" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">문의 내용</label>
+                    <textarea id="message" name="message" rows="4" placeholder="문의 내용을 상세히 적어주세요" required></textarea>
+                </div>
+                <button type="submit" class="submit-btn">문의 보내기</button>
+            </form>
+        </div>
+
+        <div class="comments-container">
+            <h2>댓글 피드백</h2>
+            <div id="disqus_thread"></div>
+            <script>
+                (function() { // DON'T EDIT BELOW THIS LINE
+                var d = document, s = d.createElement('script');
+                s.src = 'https://mindyy.disqus.com/embed.js';
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+                })();
+            </script>
+            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        </div>
+    </main>
+
     <script type="module" src="main.js"></script>
 </body>
 </html>

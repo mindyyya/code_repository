@@ -22,34 +22,45 @@
     </script>
 </head>
 <body class="animal-test-page">
-    <div class="top-nav">
-        <a href="index.html" class="back-btn">← 메인으로</a>
-        <button onclick="toggleTheme()" class="theme-toggle-btn" aria-label="Toggle Dark Mode">
-            <span class="icon">🌓</span>
-            <span class="text">테마 전환</span>
-        </button>
-    </div>
-
-    <div class="app-container animal-upload-container">
-        <h1>인공지능 동물상 테스트</h1>
-        <p class="subtitle">사진을 업로드하여 당신의 동물상을 확인하세요.</p>
-        
-        <div class="upload-section">
-            <label for="image-upload" class="file-upload-label">
-                <span class="upload-icon">📸</span>
-                <span class="upload-text">사진 선택하기</span>
-            </label>
-            <input type="file" id="image-upload" accept="image/*" onchange="handleImageUpload(event)" style="display: none;">
-        </div>
-
-        <div id="result-display-section" style="display: none;">
-            <div class="image-preview-wrapper">
-                <img id="face-image" src="#" alt="your image" />
+    <header class="main-header">
+        <nav class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html">🍀 MY APP</a>
             </div>
-            <div id="label-container" class="analysis-results"></div>
-            <button class="retry-btn" onclick="location.reload()">다시 테스트하기</button>
+            <ul class="nav-links">
+                <li><a href="index.html">로또 추첨</a></li>
+                <li><a href="animal-test.html" class="active">동물상 테스트</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button onclick="toggleTheme()" class="theme-toggle-btn" aria-label="Toggle Dark Mode">
+                    <span class="icon">🌓</span>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <main class="content-wrapper">
+        <div class="app-container animal-upload-container">
+            <h1>인공지능 동물상 테스트</h1>
+            <p class="subtitle">사진을 업로드하여 당신의 동물상을 확인하세요.</p>
+            
+            <div class="upload-section">
+                <label for="image-upload" class="file-upload-label">
+                    <span class="upload-icon">📸</span>
+                    <span class="upload-text">사진 선택하기</span>
+                </label>
+                <input type="file" id="image-upload" accept="image/*" onchange="handleImageUpload(event)" style="display: none;">
+            </div>
+
+            <div id="result-display-section" style="display: none;">
+                <div class="image-preview-wrapper">
+                    <img id="face-image" src="#" alt="your image" />
+                </div>
+                <div id="label-container" class="analysis-results"></div>
+                <button class="retry-btn" onclick="location.reload()">다시 테스트하기</button>
+            </div>
         </div>
-    </div>
+    </main>
 
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
