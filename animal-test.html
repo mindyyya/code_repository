@@ -1,0 +1,119 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI 동물상 테스트 - 사진 업로드</title>
+    <link rel="stylesheet" href="style.css">
+    <script>
+        // 초기 테마 설정
+        (function() {
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'dark') {
+                document.documentElement.classList.add('dark-mode');
+            }
+        })();
+
+        function toggleTheme() {
+            const isDark = document.documentElement.classList.toggle('dark-mode');
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+        }
+    </script>
+</head>
+<body class="animal-test-page">
+    <div class="top-nav">
+        <a href="index.html" class="back-btn">← 메인으로</a>
+        <button onclick="toggleTheme()" class="theme-toggle-btn" aria-label="Toggle Dark Mode">
+            <span class="icon">🌓</span>
+            <span class="text">테마 전환</span>
+        </button>
+    </div>
+
+    <div class="app-container animal-upload-container">
+        <h1>인공지능 동물상 테스트</h1>
+        <p class="subtitle">사진을 업로드하여 당신의 동물상을 확인하세요.</p>
+        
+        <div class="upload-section">
+            <label for="image-upload" class="file-upload-label">
+                <span class="upload-icon">📸</span>
+                <span class="upload-text">사진 선택하기</span>
+            </label>
+            <input type="file" id="image-upload" accept="image/*" onchange="handleImageUpload(event)" style="display: none;">
+        </div>
+
+        <div id="result-display-section" style="display: none;">
+            <div class="image-preview-wrapper">
+                <img id="face-image" src="#" alt="your image" />
+            </div>
+            <div id="label-container" class="analysis-results"></div>
+            <button class="retry-btn" onclick="location.reload()">다시 테스트하기</button>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
+    <script type="text/javascript">
+        const URL = "https://teachablemachine.withgoogle.com/models/bF-bC2JTL/";
+        let model, maxPredictions;
+
+        async function loadModel() {
+            const modelURL = URL + "model.json";
+            const metadataURL = URL + "metadata.json";
+            model = await tmImage.load(modelURL, metadataURL);
+            maxPredictions = model.getTotalClasses();
+        }
+
+        async function handleImageUpload(event) {
+            const input = event.target;
+            if (input.files && input.files[0]) {
+                const reader = new FileReader();
+                reader.onload = async function(e) {
+                    const imgElement = document.getElementById('face-image');
+                    imgElement.src = e.target.result;
+                    
+                    document.querySelector('.upload-section').style.display = 'none';
+                    document.getElementById('result-display-section').style.display = 'block';
+                    
+                    if (!model) await loadModel();
+                    await predict(imgElement);
+                };
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        async function predict(imgElement) {
+            const prediction = await model.predict(imgElement);
+            const labelContainer = document.getElementById("label-container");
+            labelContainer.innerHTML = '';
+
+            for (let i = 0; i < maxPredictions; i++) {
+                const className = prediction[i].className;
+                const probability = (prediction[i].probability * 100).toFixed(0);
+                
+                const barContainer = document.createElement("div");
+                barContainer.className = "prediction-bar-container";
+                
+                const labelName = document.createElement("div");
+                labelName.className = "label-name";
+                labelName.innerText = `${className} (${probability}%)`;
+                
+                const barOuter = document.createElement("div");
+                barOuter.className = "bar-outer";
+                
+                const barInner = document.createElement("div");
+                barInner.className = "bar-inner";
+                barInner.style.width = probability + "%";
+                
+                if (className === "강아지") barInner.style.backgroundColor = "#f1c40f";
+                else if (className === "고양이") barInner.style.backgroundColor = "#a29bfe";
+                
+                barOuter.appendChild(barInner);
+                barContainer.appendChild(labelName);
+                barContainer.appendChild(barOuter);
+                labelContainer.appendChild(barContainer);
+            }
+        }
+    </script>
+</body>
+</html>
