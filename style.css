@@ -106,6 +106,84 @@ h1 {
     letter-spacing: -1.5px;
 }
 
+/* Animal Test Styles */
+.animal-test-container {
+    margin-bottom: 3rem;
+}
+
+.subtitle {
+    margin-top: -2.5rem;
+    margin-bottom: 2.5rem;
+    font-size: 1.1rem;
+    opacity: 0.8;
+}
+
+.animal-start-btn {
+    background-image: linear-gradient(135deg, #ff9a9e 0%, #fecfef 99%, #fecfef 100%);
+    color: #d85d5d;
+    border: none;
+    padding: 1.2rem 3rem;
+    border-radius: 50px;
+    font-size: 1.3rem;
+    font-weight: 800;
+    cursor: pointer;
+    box-shadow: 0 8px 15px rgba(216, 93, 93, 0.2);
+    transition: all 0.3s;
+}
+
+.animal-start-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(216, 93, 93, 0.3);
+}
+
+#webcam-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2rem;
+}
+
+#webcam-container canvas {
+    border-radius: 20px;
+    box-shadow: 0 10px 30px var(--shadow-color);
+    border: 5px solid var(--primary-color);
+    width: 100%;
+    max-width: 300px;
+}
+
+#label-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 0 1rem;
+}
+
+.prediction-bar-container {
+    width: 100%;
+}
+
+.label-name {
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    text-align: left;
+    font-size: 1rem;
+}
+
+.bar-outer {
+    height: 14px;
+    background-color: var(--bg-color);
+    border-radius: 10px;
+    overflow: hidden;
+    width: 100%;
+}
+
+.bar-inner {
+    height: 100%;
+    width: 0;
+    background-color: var(--accent-color);
+    border-radius: 10px;
+    transition: width 0.3s ease-out;
+}
+
 #result-container {
     margin-top: 2.5rem;
     display: grid;
