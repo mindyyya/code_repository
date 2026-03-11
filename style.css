@@ -18,7 +18,8 @@
     --btn-border: #dee2e6;
 }
 
-body.dark-mode {
+/* html.dark-mode 로 변경 (안정적인 적용을 위해) */
+html.dark-mode body {
     --bg-color: #121212;
     --primary-color: #1e1e1e;
     --shadow-color: rgba(0, 0, 0, 0.4);
@@ -49,41 +50,44 @@ body {
 
 .app-container {
     background-color: var(--primary-color);
-    padding: 2.5rem 3rem 3rem 3rem;
+    padding: 2.5rem 2rem 3rem 2rem;
     border-radius: 20px;
-    box-shadow: 0 10px 30px var(--shadow-color);
-    width: 90%;
-    max-width: 600px;
+    box-shadow: 0 10px 40px var(--shadow-color);
+    width: 95%;
+    max-width: 550px;
     text-align: center;
     position: relative;
     border: 1px solid var(--lotto-set-border);
+    overflow: hidden;
 }
 
 .header-actions {
     display: flex;
-    justify-content: flex-end;
-    margin-bottom: 1rem;
+    justify-content: center; /* 가운데 정렬 */
+    margin-bottom: 2rem;
 }
 
 .theme-toggle {
     background-color: var(--btn-bg);
-    border: 1px solid var(--btn-border);
+    border: 2px solid var(--btn-border);
     color: var(--text-color);
-    padding: 0.6rem 1rem;
-    border-radius: 12px;
+    padding: 0.8rem 1.5rem;
+    border-radius: 14px;
     cursor: pointer;
     display: flex;
     align-items: center;
-    gap: 8px;
-    font-size: 0.9rem;
-    font-weight: 500;
+    gap: 10px;
+    font-size: 1rem;
+    font-weight: 600;
     transition: all 0.2s ease;
-    box-shadow: 0 2px 5px var(--shadow-color);
+    box-shadow: 0 4px 10px var(--shadow-color);
+    z-index: 100;
 }
 
 .theme-toggle:hover {
-    transform: translateY(-1px);
-    box-shadow: 0 4px 8px var(--shadow-color);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px var(--shadow-color);
+    background-color: var(--btn-border);
 }
 
 .theme-toggle:active {
@@ -91,16 +95,16 @@ body {
 }
 
 .mode-icon {
-    font-size: 1.2rem;
+    font-size: 1.4rem;
 }
 
 h1 {
     text-align: center;
-    margin-bottom: 2rem;
+    margin-bottom: 2.5rem;
     color: var(--text-color);
-    font-size: 2.2rem;
+    font-size: 2.4rem;
     font-weight: 800;
-    letter-spacing: -0.5px;
+    letter-spacing: -1px;
 }
 
 #result-container {
@@ -115,18 +119,18 @@ h1 {
     background-image: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     color: white;
     border: none;
-    padding: 1.1rem 2.5rem;
+    padding: 1.2rem 3rem;
     border-radius: 50px;
-    font-size: 1.25rem;
+    font-size: 1.4rem;
     font-weight: 700;
     cursor: pointer;
     transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    box-shadow: 0 8px 20px rgba(118, 75, 162, 0.3);
+    box-shadow: 0 10px 25px rgba(118, 75, 162, 0.4);
 }
 
 #draw-btn:hover {
-    transform: translateY(-3px) scale(1.02);
-    box-shadow: 0 12px 25px rgba(118, 75, 162, 0.4);
+    transform: translateY(-4px) scale(1.03);
+    box-shadow: 0 15px 30px rgba(118, 75, 162, 0.5);
 }
 
 #draw-btn:active {

@@ -128,29 +128,12 @@ function generateFiveSets() {
 function initApp() {
     const drawBtn = document.getElementById('draw-btn');
     const resultContainer = document.getElementById('result-container');
-    const themeToggle = document.getElementById('theme-toggle');
 
-    if (!drawBtn || !resultContainer || !themeToggle) {
+    if (!drawBtn || !resultContainer) {
         console.error('Required elements not found. Retrying...');
         setTimeout(initApp, 100);
         return;
     }
-
-    console.log('App initialized');
-
-    // Theme logic
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme === 'dark') {
-        document.body.classList.add('dark-mode');
-    }
-
-    themeToggle.addEventListener('click', (e) => {
-        e.preventDefault();
-        document.body.classList.toggle('dark-mode');
-        const isDark = document.body.classList.contains('dark-mode');
-        localStorage.setItem('theme', isDark ? 'dark' : 'light');
-        console.log('Theme changed to:', isDark ? 'dark' : 'light');
-    });
 
     drawBtn.addEventListener('click', () => {
         const fiveSets = generateFiveSets();
@@ -167,7 +150,7 @@ function initApp() {
     }
 }
 
-// Initialize once
+// Initialize
 if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', initApp);
 } else {
